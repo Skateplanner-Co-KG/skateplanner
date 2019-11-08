@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="de">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
-    <link rel="stylesheet" href="styleAboutUs.css">
+    <link rel="stylesheet" href="../static/styleAboutUs.css">
 </head>
 <body>
 <header>
@@ -13,9 +13,9 @@
 <nav>
     <ul>
         <li><a tabindex="0" aria-current="page">AboutUs</a></li>
-        <li><a href="html/planner.html">Planner</a></li>
-        <li><a href="html/gallery.html">Gallery</a></li>
-        <li> <a href="html/contact.html">Contact</a></li>
+        <li><a href="planner">Planner</a></li>
+        <li><a href="gallery">Gallery</a></li>
+        <li> <a href="contact">Contact</a></li>
     </ul>
 
 </nav>
@@ -38,7 +38,7 @@
 </table></p>
 
 <script>
-    const today = new Date();
+    today = new Date();
     document.write(today);
 </script>
 
@@ -95,5 +95,9 @@
     </tr>
     </tbody>
 </table>
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
 </body>
 </html>

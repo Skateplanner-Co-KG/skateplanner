@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SkateplannerApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SkateplannerApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(SkateplannerApplication.class, args);
+    }
 
 }
