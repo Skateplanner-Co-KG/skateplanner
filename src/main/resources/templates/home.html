@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<title>Skateplanner - Home</title>
@@ -15,6 +15,11 @@
 		<li><a href="about_us">About Us</a></li>
 		<li><a href="planner">Planner</a></li>
 		<li><a href="contact">Contact</a></li>
+		<li>
+			<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Sign Out"/>
+			</form>
+		</li>
 	</ul>
 </nav>
 <h2>Home</h2>

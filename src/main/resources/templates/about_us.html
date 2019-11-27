@@ -16,6 +16,11 @@
         <li><a href="home">Home</a></li>
         <li><a href="planner">Planner</a></li>
         <li><a href="contact">Contact</a></li>
+        <li>
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" value="Sign Out"/>
+            </form>
+        </li>
     </ul>
 </nav>
 <h2>About Us</h2>
@@ -106,8 +111,5 @@ Goal 3: To be continued.<br>
     </tbody>
 </table>
 
-<form th:action="@{/logout}" method="post">
-    <input type="submit" value="Sign Out"/>
-</form>
 </body>
 </html>
