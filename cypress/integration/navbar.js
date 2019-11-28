@@ -8,7 +8,6 @@ context('Actions', () => {
 
     it('navBarElements', function () {
         cy.contains('About Us');
-        cy.contains('Planner');
         cy.contains('Contact');
         cy.contains('Sign Out')
     });
@@ -16,8 +15,6 @@ context('Actions', () => {
     it('redirections', function () {
         cy.contains('About Us').click();
         cy.url().should('contain','about_us');
-        cy.contains('Planner').click();
-        cy.url().should('contain','planner');
         cy.contains('Contact').click();
         cy.url().should('contain','contact');
     });
