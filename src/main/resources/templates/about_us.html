@@ -11,20 +11,22 @@
 <header>
     <h1></h1>
 </header>
-<nav>
-    <ul>
-        <li><a href="home">Home</a></li>
-        <li><a href="planner">Planner</a></li>
-        <li><a href="contact">Contact</a></li>
-        <li>
-            <form th:action="@{/logout}" method="post">
-                <input type="submit" value="Sign Out"/>
-            </form>
-        </li>
-    </ul>
+<nav class="navbar navbar-dark bg-dark navbar-fixed-top">
+    <div class="container d-flex justify-content-between">
+        <ul class="nav justify-content-center">
+            <li class="nav-item"><a  tabindex="0" aria-current="page">About us</a></li>
+            <li class="nav-item"><a href="planner">Planner</a></li>
+            <li class="nav-item"><a  href="contact">Contact</a></li>
+            <li class="nav-item">
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" value="Sign Out"/>
+                </form>
+            </li>
+        </ul>
+    </div>
 </nav>
 <h2>About Us</h2>
-<p><table>
+<table class="table table-sm table-dark">
 
     <tr>
         <th>Konstantin Zehnter</th>
@@ -39,7 +41,7 @@
     </tr>
 
 
-</table></p>
+</table>
 
 <script>
     today = new Date();
@@ -60,7 +62,7 @@ adding and removing events<br><br>
 Goal 3: To be continued.<br>
 <h4>User Personas</h4>
 
-<table>
+<table class="table table-hover table-dark">
     <thead>
     <tr>
         <th>Person</th>

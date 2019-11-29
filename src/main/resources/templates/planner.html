@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Planner</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleplanner.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
 <header>
     <h1></h1>
 </header>
-<nav>
-    <ul>
-        <li><a href="about_us">About Us</a></li>
-        <li><a href="home">Home</a></li>
-        <li><a href="contact">Contact</a></li>
-        <li>
-            <form th:action="@{/logout}" method="post">
-                <input type="submit" value="Sign Out"/>
-            </form>
-        </li>
-    </ul>
+<nav class="navbar navbar-dark bg-dark navbar-fixed-top">
+    <div class="container d-flex justify-content-between">
+        <ul class="nav justify-content-center">
+            <li class="nav-item"><a href="about_us">About us</a></li>
+            <li class="nav-item"><a tabindex="0" aria-current="page">Planner</a></li>
+            <li class="nav-item"><a href="contact">Contact</a></li>
+            <li class="nav-item">
+                <form th:action="@{/logout}" method="post">
+                    <input type="submit" value="Sign Out"/>
+                </form>
+            </li>
+        </ul>
+    </div>
 </nav>
     <h1>Welcome Admin.</h1>
 </body>
