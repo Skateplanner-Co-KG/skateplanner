@@ -35,3 +35,10 @@ li input{
     display: block;
     font-size: 18px;
 }
+h1{
+    font-family: Vivaldi, "Brush Script", fantasy;
+    color: black;
+    text-align: center;
+    font-size: 40px;
+    font-weight: normal;
+}
