@@ -1,4 +1,4 @@
-package de.htwberlin.skateplanner.model;
+package de.htwberlin.skateplanner.user;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

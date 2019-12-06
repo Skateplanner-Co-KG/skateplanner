@@ -1,7 +1,8 @@
-package de.htwberlin.skateplanner;
+package de.htwberlin.skateplanner.security;
 
-import de.htwberlin.skateplanner.model.UserEntity;
-import de.htwberlin.skateplanner.model.UserRepository;
+import de.htwberlin.skateplanner.security.MyUserDetails;
+import de.htwberlin.skateplanner.user.UserEntity;
+import de.htwberlin.skateplanner.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

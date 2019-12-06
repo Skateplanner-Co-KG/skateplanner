@@ -1,6 +1,6 @@
 package de.htwberlin.skateplanner;
 
-import de.htwberlin.skateplanner.model.UserRepository;
+import de.htwberlin.skateplanner.user.UserRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;

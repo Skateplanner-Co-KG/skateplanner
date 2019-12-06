@@ -1,12 +1,9 @@
 "# skateplanner" </br>
 next Goals: </br>
--to use Bootstraps for Login and About Us </br>
-
 Trainer: create new event
 - planner page contains:
   - event entry
     - button "join event"
-  - button "new event" navigates Trainer to form page
 - form page: contains:
   - event name
   - timespan
@@ -21,4 +18,7 @@ Member: join event
     - button "join event" adds Member to the list of participants
     
 -https://medium.com/flatlogic/top-javascript-calendar-plugins-aaac8176a759
+
+- reusing html code: irgendwie mit 
+https://html.spec.whatwg.org/multipage/scripting.html#the-template-element
   

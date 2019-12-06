@@ -1,6 +1,6 @@
-package de.htwberlin.skateplanner;
+package de.htwberlin.skateplanner.security;
 
-import de.htwberlin.skateplanner.model.UserEntity;
+import de.htwberlin.skateplanner.user.UserEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
