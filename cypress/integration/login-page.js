@@ -1,3 +1,7 @@
+/**
+ * Author: Konstantin
+ */
+
 function loginAsMember(param) {
   cy.get('[data-cy=username]').click().type('member');
   cy.get('[data-cy=password]').click().type('pass');
@@ -48,13 +52,6 @@ describe('Navigation-Bar', function () {
     // given
     cy.visit('localhost:8080/login');
     loginAsTrainer();
-  });
-
-  it('navBarElements', function () {
-    // then
-    cy.contains('About us');
-    cy.contains('Contact');
-    cy.contains('Sign Out')
   });
 
   it('redirections', function () {
