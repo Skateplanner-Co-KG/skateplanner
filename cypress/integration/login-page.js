@@ -1,13 +1,13 @@
 function loginAsMember(param) {
-  cy.contains(' User Name : ').click().type('member');
-  cy.contains(' Password: ').click().type('pass');
-  cy.contains('Sign In').click();
+  cy.get('[data-cy=username]').click().type('member');
+  cy.get('[data-cy=password]').click().type('pass');
+  cy.get('[data-cy=signIn]').click();
 }
 
 function loginAsTrainer(param) {
-  cy.contains(' User Name : ').click().type('trainer');
-  cy.contains(' Password: ').click().type('pass2');
-  cy.contains('Sign In').click();
+  cy.get('[data-cy=username]').click().type('trainer');
+  cy.get('[data-cy=password').click().type('pass2');
+  cy.get('[data-cy=signIn').click();
 }
 
 describe('Login-Page', function() {
@@ -74,19 +74,5 @@ describe('Navigation-Bar', function () {
     // then
     cy.url().should('contain', 'login')
   })
-});
-
-describe('Planner', function () {
-  beforeEach(() => {
-    //given
-    cy.visit('localhost:8080/login');
-    loginAsTrainer();
-  })
-
-  // it('addNewEvent', function () {
-  //   cy.contains('new Event').click().type('Neues Training');
-  //   cy.contains('add-Button').click()
-  //   cy.contains('Neues Training')
-  // });
 });
 

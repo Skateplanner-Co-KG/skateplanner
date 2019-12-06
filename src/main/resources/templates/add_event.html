@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Event</title>
+</head>
+<body>
+<form th:action="@{/add_event}" method="post">
+    <div><label> Event-Name: <input type="text" name="eventname" data-cy="eventname"/> </label></div>
+    <div><input type="submit" value="Add Event" data-cy="addEventBtn2"></div>
+</form>
+</body>
+</html>
