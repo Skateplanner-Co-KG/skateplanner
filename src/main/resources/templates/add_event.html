@@ -3,13 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Event</title>
+    <link rel="stylesheet" href="stylemain.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 <body>
+<header>
+    <h1>Add new Event</h1>
+</header>
 <nav th:insert="planner.html :: nav">
 </nav>
-<form th:action="@{/add_event}" method="post">
+<!--<form th:action="@{/add_event}" method="post">
     <div><label> Event-Name: <input type="text" name="eventname" data-cy="eventname"/> </label></div>
     <div><input type="submit" value="Add Event" data-cy="addEventBtn2"></div>
+</form>-->
+
+<div class=" d-flex justify-content-center">
+<form th:action="@{/add_event}" method="post">
+    <div class="btn-group-vertical" role="group">
+       <div class="input-group-prepend"> <span class="input-group-text" id="inputGroup">Event Name :</span>
+          <!--  <label for="newEvent">Event-Name</label>-->
+            <select id="newEvent" class="form-control">
+                <option>training</option>
+                <option>competition</option>
+            </select>
+        </div>
+        <!--<label> Event-Name: <input type="text" name="eventname" data-cy="eventname"/> </label>-->
+        <div class="input-group-prepend"><span class="input-group-text" id="timespan">Timespan :</span>
+             <input type="text" name="timespan" data-cy="timespan"/>
+        </div>
+
+        <div class="input-group-prepend"><span class="input-group-text" id="description">Description :</span>
+            <input type="text" name="description" data-cy="description"/>
+        </div>
+
+        <div class="input-group-prepend"><span class="input-group-text" id="participants">Participants :</span>
+            <input type="text" name="participants" data-cy="participants"/>
+        </div>
+
+       <!-- <label> Description <input type="text" name="description" data-cy="description"/> </label>
+        <label> Participants <input type="text" name="participants" data-cy="participants"/> </label>-->
+        <input class="btn btn-outline-dark" type="submit" value="Add Event" data-cy="addEventBtn2">
+    </div>
+   <!-- <div><input type="submit" value="Add Event" data-cy="addEventBtn2"></div>-->
 </form>
+</div>
 </body>
 </html>

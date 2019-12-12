@@ -1,0 +1,45 @@
+body{
+    width: 100%;
+    background-color: snow;
+}
+
+header{
+    background: rgb(63,232,251);
+    background: radial-gradient(circle, rgba(63,232,251,1) 0%, rgba(125,70,252,1) 100%);
+}
+
+li {
+    float: left;
+    display: table-cell;
+}
+
+li:hover {
+    background-color: black;
+}
+li a{
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 18px;
+}
+
+li input{
+    background-color: transparent;
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 18px;
+}
+h1{
+    font-family: Vivaldi, "Brush Script", fantasy;
+    color: black;
+    text-align: center;
+    font-size: 40px;
+    font-weight: normal;
+}
