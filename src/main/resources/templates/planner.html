@@ -28,10 +28,24 @@
     <h2>Welcome Admin.</h2>
 
 <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="new Event" aria-label="new Event" aria-describedby="add-Button">
-    <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" onclick="window.location.href = 'add_event'" data-cy="addEventBtn">add</button>
-    </div>
+
+    <form th:action="@{/planner}" th:object="${event}" method="post">
+        <input id="name" th:field="*{name}" class="form-control">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="submit">add</button>
+        </div>
+        <p th:each="error: ${#fields.errors('name')}"
+           th:text="${error}">Validation error</p>
+    </form>
 </div>
+<div>
+    <th:block th:each="event : ${events}">
+        <tr>
+            <td th:text="${event.id}">Id</td>
+            <td th:text="${event.name}">Name</td>
+        </tr>
+    </th:block>
+</div>
+
 </body>
 </html>
