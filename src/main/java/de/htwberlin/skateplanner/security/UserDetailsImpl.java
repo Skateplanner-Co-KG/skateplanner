@@ -8,13 +8,13 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Arrays;
 import java.util.Collection;
 
-public class MyUserDetails implements UserDetails {
+public class UserDetailsImpl implements UserDetails {
 
     private String username;
     private String password;
     private Collection<? extends GrantedAuthority> roles;
 
-    public MyUserDetails(UserEntity user) {
+    public UserDetailsImpl(UserEntity user) {
         this.username = user.getUsername();
         this.password = user.getPassword();
         this.roles = Arrays.asList(new SimpleGrantedAuthority(user.getRole()));
