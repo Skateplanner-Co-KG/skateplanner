@@ -1,5 +1,5 @@
 <!doctype html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,19 +11,7 @@
 <header>
     <h1>Skateplanner</h1>
 </header>
-<nav class="navbar navbar-dark bg-dark navbar-fixed-top">
-    <div class="container d-flex justify-content-between">
-        <ul class="nav justify-content-center">
-            <li class="nav-item"><a  tabindex="0" aria-current="page">About us</a></li>
-            <li class="nav-item"><a href="planner">Planner</a></li>
-            <li class="nav-item"><a  href="contact">Contact</a></li>
-            <li class="nav-item">
-                <form th:action="@{/logout}" method="post">
-                    <input type="submit" value="Sign Out"/>
-                </form>
-            </li>
-        </ul>
-    </div>
+<nav th:insert="planner.html :: nav">
 </nav>
 <h2>About Us</h2>
 <table class="table table-sm table-dark">

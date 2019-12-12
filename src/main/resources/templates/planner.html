@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<html  xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Planner</title>
@@ -10,18 +10,18 @@
 <header>
     <h1>Skateplanner</h1>
 </header>
-<nav class="navbar navbar-dark bg-dark navbar-fixed-top">
-    <div class="container d-flex justify-content-between">
-        <ul class="nav justify-content-center">
-            <li class="nav-item"><a href="about_us">About us</a></li>
-            <li class="nav-item"><a tabindex="0" aria-current="page">Planner</a></li>
-            <li class="nav-item"><a href="contact">Contact</a></li>
-            <li class="nav-item">
-                <form th:action="@{/logout}" method="post">
-                    <input type="submit" value="Sign Out"/>
-                </form>
-            </li>
+<nav th:fragment="nav">
+    <div class="navbar navbar-dark bg-dark navbar-fixed-top justify-content-between">
+        <ul>
+            <li th:classappend="${module == 'planner' ? 'active' : ''}"><a href="#" th:href="@{/planner}">Planner</a></li>
+            <li th:classappend="${module == 'contact' ? 'active' : ''}"><a href="#" th:href="@{/contact}">Contact</a></li>
+            <li th:classappend="${module == 'about_us' ? 'active' : ''}"><a href="#" th:href="@{/about_us}">About Us</a></li>
         </ul>
+            <form  th:action="@{/logout}" method="post">
+                <div class="navbar-nav ml-auto" >
+            <input class="btn btn-outline-light" type="submit" value="Sign Out"/>
+                </div>
+        </form>
     </div>
 </nav>
 

@@ -3,13 +3,6 @@ body{
     background-color: snow;
 }
 
-/*nav ul {
-    margin-bottom: 10px;
-    overflow: hidden;
-    width: 100%;
-    display: table;
-    background-color: cadetblue;
-}*/
 header{
     background: rgb(63,232,251);
     background: radial-gradient(circle, rgba(63,232,251,1) 0%, rgba(125,70,252,1) 100%);
