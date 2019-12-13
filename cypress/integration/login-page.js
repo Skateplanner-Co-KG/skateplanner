@@ -36,14 +36,14 @@ describe('Login-Page', function() {
     // when
     loginAsMember();
     // then
-    cy.url().should('eq', 'http://localhost:8080/')
+    cy.url().should('eq', 'http://localhost:8080/planner')
   });
 
   it('Successfull login as trainer', function() {
     // when
     loginAsTrainer();
     // then
-    cy.url().should('eq', 'http://localhost:8080/')
+    cy.url().should('eq', 'http://localhost:8080/planner')
   })
 });
 
@@ -54,16 +54,16 @@ describe('Navigation-Bar', function () {
     loginAsTrainer();
   });
 
-  it('redirections', function () {
-    // when
-    cy.contains('About us').click();
-    // then
-    cy.url().should('contain','about_us');
-    // when
-    cy.contains('Contact').click();
-    // then
-    cy.url().should('contain','contact');
-  });
+  // it('redirections', function () {
+  //   // when
+  //   cy.contains('About us').click();
+  //   // then
+  //   cy.url().should('contain','about_us');
+  //   // when
+  //   cy.contains('Contact').click();
+  //   // then
+  //   cy.url().should('contain','contact');
+  // });
 
   it('logOut', function () {
     // when
