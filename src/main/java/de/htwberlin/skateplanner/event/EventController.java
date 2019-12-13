@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/planner")
+@RequestMapping("/add_event")
 public class EventController {
 
     @Autowired

@@ -5,10 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -34,11 +31,13 @@ public class RegistrationController {
         if (userDetailsService.checkIfEmailIsRegistered(userDto.getEmail())) {
             result.rejectValue("email", null, "There is already an account registered with that email");
         }
+        if (userDto.getPassword() == null)
+            System.out.println("hi");
         if (!userDto.getPassword().equals(userDto.getConfirmPassword())) {
             result.rejectValue("password", null, "Password and Confirmed Password do not match");
         }
         if (result.hasErrors()) {
-            return "register";
+            return "forward:/register";
         }
         userDetailsService.save(userDto);
         return "redirect:/login?registered";

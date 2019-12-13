@@ -4,6 +4,7 @@ import de.htwberlin.skateplanner.security.UserDetailsServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,6 +12,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 class RegistrationControllerTest {
 
@@ -27,12 +29,26 @@ class RegistrationControllerTest {
     }
 
     @Test
-    void registerUserAccount() throws Exception {
+    void registerUserAccount_Success() throws Exception {
         when(userDetailsService.checkIfEmailIsRegistered(anyString())).thenReturn(false);
-        UserRegistrationDto dto = new UserRegistrationDto("Hans", "abc", "abc", "hans@hans.de");
-        when(userDetailsService.save(any())).thenReturn(null);
+        mockMvc.perform(post("/register")
+                .param("username", "Hans")
+                .param("password", "abc")
+                .param("confirmPassword", "abc")
+                .param("email", "hans@hans.de"))
+                .andExpect(redirectedUrl("/login?registered"));
+        verify(userDetailsService, times(1)).save(any());
+    }
 
-        assertEquals(mockMvc.perform(post("/register", dto)).andReturn(), "redirect:/login?registered");
-        verify(userDetailsService, times(1)).save(dto);
+    @Test
+    void registerUserAccount_FailurePasswordNotConfirmed() throws Exception {
+        when(userDetailsService.checkIfEmailIsRegistered(anyString())).thenReturn(false);
+        mockMvc.perform(post("/register")
+                .param("username", "Hans")
+                .param("password", "abc")
+                .param("confirmPassword", "abd")
+                .param("email", "hans@hans.de"))
+                .andExpect(forwardedUrl("/register"));
+        verify(userDetailsService, times(0)).save(any());
     }
 }
