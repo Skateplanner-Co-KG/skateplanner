@@ -1,10 +1,10 @@
-package de.htwberlin.skateplanner.fragment;
+package de.htwberlin.skateplanner.static_page;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class fragmentController {
+public class StaticPageController {
     @RequestMapping("/")
     public String planner(){
         return "planner.html";
