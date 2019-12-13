@@ -17,7 +17,7 @@ import javax.validation.Valid;
 public class RegistrationController {
 
     @Autowired
-    private UserDetailsServiceImpl userDetailsService;
+    UserDetailsServiceImpl userDetailsService;
 
     @ModelAttribute("user")
     public UserRegistrationDto userRegistrationDto() {
