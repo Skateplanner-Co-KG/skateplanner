@@ -8,7 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
@@ -28,19 +28,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/", "/home", "/about_us", "/contact", "planner", "/gallery").hasAnyAuthority(ROLE_TRAINER, ROLE_MEMBER)
+        http
+                .authorizeRequests().antMatchers("/", "/home", "/about_us", "/contact", "/planner", "/gallery").hasAnyAuthority(ROLE_TRAINER, ROLE_MEMBER)
                 .and()
                 .authorizeRequests().antMatchers("/add_event").hasAnyAuthority(ROLE_TRAINER)
                 .and()
-                .formLogin().loginPage("/login").permitAll()
+                .authorizeRequests().antMatchers("/register").permitAll()
+                .and()
+                .formLogin().loginPage("/login").permitAll().defaultSuccessUrl("/planner", true)
                 .and()
                 .logout().permitAll();
     }
 
     @Bean
     public PasswordEncoder getPasswordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
+        return new BCryptPasswordEncoder();
     }
 
 }
