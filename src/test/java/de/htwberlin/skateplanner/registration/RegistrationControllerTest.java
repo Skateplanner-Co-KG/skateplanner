@@ -51,4 +51,16 @@ class RegistrationControllerTest {
                 .andExpect(forwardedUrl("/register"));
         verify(userDetailsService, times(0)).save(any());
     }
+
+    @Test
+    void registerUserAccount_FailureEmailAlreadyPresent() throws Exception {
+        when(userDetailsService.checkIfEmailIsRegistered(anyString())).thenReturn(true);
+        mockMvc.perform(post("/register")
+                .param("username", "Hans")
+                .param("password", "abc")
+                .param("confirmPassword", "abc")
+                .param("email", "hans@hans.de"))
+                .andExpect(forwardedUrl("/register"));
+        verify(userDetailsService, times(0)).save(any());
+    }
 }

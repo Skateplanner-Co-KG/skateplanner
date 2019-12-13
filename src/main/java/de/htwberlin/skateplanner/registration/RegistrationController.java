@@ -31,8 +31,6 @@ public class RegistrationController {
         if (userDetailsService.checkIfEmailIsRegistered(userDto.getEmail())) {
             result.rejectValue("email", null, "There is already an account registered with that email");
         }
-        if (userDto.getPassword() == null)
-            System.out.println("hi");
         if (!userDto.getPassword().equals(userDto.getConfirmPassword())) {
             result.rejectValue("password", null, "Password and Confirmed Password do not match");
         }

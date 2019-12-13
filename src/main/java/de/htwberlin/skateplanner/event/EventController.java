@@ -35,14 +35,9 @@ public class EventController {
 
     @PostMapping
     public String addEvent(@ModelAttribute("event") @Valid EventEntity event, BindingResult result) {
-        System.out.println("test1");
         if (eventRepository.existsByName(event.getName()))
             result.rejectValue("name", null, "Eventname is already taken");
-        System.out.println("test2");
-
         eventRepository.save(event);
-        System.out.println("test3");
-
         return "planner";
     }
 
