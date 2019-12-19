@@ -1,28 +1,23 @@
 matrix:
   include:
     - language: java
-    jdk:
-    - oraclejdk11
-
+      jdk:
+      - oraclejdk11
     - language: node_js
-    node_js:
+      node_js:
       - 10
-
-    addons:
-      apt:
-        packages:
+      addons:
+        apt:
+          packages:
           - libgconf-2-4
 
-    cache:
-      directories:
-        - ~/.npm
-        - ~/.cache
-
-    install:
-      - npm ci
-
-    before_script:
-      - npm start -- --silent &
-
-    script:
-      - npm run cypress:run
+      cache:
+        directories:
+          - ~/.npm
+          - ~/.cache
+      install:
+        - npm ci
+      before_script:
+        - npm start -- --silent &
+      script:
+        - npm run cypress:run
