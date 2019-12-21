@@ -4,15 +4,14 @@ import de.htwberlin.skateplanner.security.UserDetailsServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 
 class RegistrationControllerTest {
 
@@ -36,7 +35,7 @@ class RegistrationControllerTest {
                 .param("password", "abc")
                 .param("confirmPassword", "abc")
                 .param("email", "hans@hans.de"))
-                .andExpect(redirectedUrl("/login?registered"));
+                .andExpect(redirectedUrl("login?registered"));
         verify(userDetailsService, times(1)).save(any());
     }
 
@@ -48,7 +47,7 @@ class RegistrationControllerTest {
                 .param("password", "abc")
                 .param("confirmPassword", "abd")
                 .param("email", "hans@hans.de"))
-                .andExpect(forwardedUrl("/register"));
+                .andExpect(forwardedUrl("register"));
         verify(userDetailsService, times(0)).save(any());
     }
 
@@ -60,7 +59,7 @@ class RegistrationControllerTest {
                 .param("password", "abc")
                 .param("confirmPassword", "abc")
                 .param("email", "hans@hans.de"))
-                .andExpect(forwardedUrl("/register"));
+                .andExpect(forwardedUrl("register"));
         verify(userDetailsService, times(0)).save(any());
     }
 }
