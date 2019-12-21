@@ -26,7 +26,7 @@ public class RegistrationController {
 
     @GetMapping
     public String showRegistrationForm(Model model) {
-        return "register";
+        return "register_form";
     }
 
     @PostMapping
@@ -38,7 +38,7 @@ public class RegistrationController {
             result.rejectValue("password", null, "Password and Confirmed Password do not match");
         }
         if (result.hasErrors()) {
-            return "forward:register";
+            return "register_form";
         }
         userDetailsService.save(userDto);
         return "redirect:login?registered";

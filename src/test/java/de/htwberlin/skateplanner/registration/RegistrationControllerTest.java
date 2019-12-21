@@ -10,8 +10,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 class RegistrationControllerTest {
 
@@ -47,7 +47,7 @@ class RegistrationControllerTest {
                 .param("password", "abc")
                 .param("confirmPassword", "abd")
                 .param("email", "hans@hans.de"))
-                .andExpect(forwardedUrl("register"));
+                .andExpect(view().name("register_form"));
         verify(userDetailsService, times(0)).save(any());
     }
 
@@ -59,7 +59,7 @@ class RegistrationControllerTest {
                 .param("password", "abc")
                 .param("confirmPassword", "abc")
                 .param("email", "hans@hans.de"))
-                .andExpect(forwardedUrl("register"));
+                .andExpect(view().name("register_form"));
         verify(userDetailsService, times(0)).save(any());
     }
 }
