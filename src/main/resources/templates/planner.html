@@ -30,14 +30,20 @@
 <button type="button" onclick="location.href = 'add_event';"class="btn btn-info btn-lg " data-cy="addEventBtn"> new Event </button>
 </div>
 
-<div>
-    <th:block th:each="event : ${events}">
-        <tr>
-            <td th:text="${event.id}">Id</td>
-            <td th:text="${event.name}">Name</td>
-        </tr>
-    </th:block>
-</div>
+<table>
+	<thead>
+	<tr>
+		<th>Id</th>
+		<th>Name</th>
+	</tr>
+	</thead>
+	<th:block th:each="event : ${events}">
+		<tr>
+			<td th:text="*{event.id}"/>
+			<td th:text="*{event.name}"/>
+		</tr>
+	</th:block>
+</table>
 
 </body>
 </html>
