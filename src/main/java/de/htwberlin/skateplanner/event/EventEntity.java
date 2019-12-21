@@ -1,25 +1,27 @@
 package de.htwberlin.skateplanner.event;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "events")
 public class EventEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
 
-    @Column(unique = true)
-    @NotEmpty
+    @NotBlank
     private String name;
 
-    public EventEntity() {
-    }
+    @NotBlank
+    private String type;
 
-    public EventEntity(String name) {
-        this.name = name;
+    @NotNull
+    private String description;
+
+    public EventEntity() {
     }
 
     public long getId() {
@@ -32,5 +34,21 @@ public class EventEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

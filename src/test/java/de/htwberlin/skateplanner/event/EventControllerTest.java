@@ -10,6 +10,7 @@ import java.util.LinkedList;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
 class EventControllerTest {
 
@@ -30,7 +31,9 @@ class EventControllerTest {
     void addEvent_Success() throws Exception {
         when(eventRepository.existsByName(anyString())).thenReturn(false);
         mockMvc.perform(post("/add_event")
-                .param("name", "something"))
+                .param("name", "something")
+                .param("type", "something")
+                .param("description", "something"))
                 .andExpect(redirectedUrl("planner"));
         verify(eventRepository, times(1)).save(any());
     }
@@ -39,8 +42,21 @@ class EventControllerTest {
     void addEvent_FailureDuplicate() throws Exception {
         when(eventRepository.existsByName(anyString())).thenReturn(true);
         mockMvc.perform(post("/add_event")
-                .param("name", "something"))
-                .andExpect(redirectedUrl("add_event?failure"));
+                .param("name", "something")
+                .param("type", "something")
+                .param("description", "something"))
+                .andExpect(view().name("add_event_form"));
+        verify(eventRepository, times(0)).save(any());
+    }
+
+    @Test
+    void addEvent_FailureMissingName() throws Exception {
+        when(eventRepository.existsByName(anyString())).thenReturn(false);
+        mockMvc.perform(post("/add_event")
+                .param("name", "")
+                .param("type", "something")
+                .param("description", "something"))
+                .andExpect(view().name("add_event_form"));
         verify(eventRepository, times(0)).save(any());
     }
 }

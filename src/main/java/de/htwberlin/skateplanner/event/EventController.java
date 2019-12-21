@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
+@RequestMapping
 @Controller
 public class EventController {
 
@@ -30,16 +31,17 @@ public class EventController {
 
     @GetMapping("/add_event")
     public String showAddEventForm(Model model) {
-        return "add_event";
+        return "add_event_form";
     }
 
     @PostMapping("/add_event")
     public String addEvent(@ModelAttribute("event") @Valid EventEntity event, BindingResult result) {
+
         if (eventRepository.existsByName(event.getName()))
             result.rejectValue("name", null, "Eventname is already taken");
 
         if (result.hasErrors())
-            return "redirect:add_event?failure";
+            return "add_event_form";
 
         eventRepository.save(event);
         return "redirect:planner";

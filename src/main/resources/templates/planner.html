@@ -35,12 +35,16 @@
 	<tr>
 		<th>Id</th>
 		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
 	</tr>
 	</thead>
 	<th:block th:each="event : ${events}">
 		<tr>
 			<td th:text="*{event.id}"/>
 			<td th:text="*{event.name}"/>
+			<td th:text="*{event.type}"/>
+			<td th:text="*{event.description}"/>
 		</tr>
 	</th:block>
 </table>
