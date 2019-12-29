@@ -1,23 +1,13 @@
-matrix:
-  include:
-    - language: java
-      jdk:
-      - oraclejdk11
-    - language: node_js
-      node_js:
-      - 10
-      addons:
-        apt:
-          packages:
-          - libgconf-2-4
-
-      cache:
-        directories:
-          - ~/.npm
-          - ~/.cache
-      install:
-        - npm ci
-      before_script:
-        - npm start -- --silent &
-      script:
-        - npm run cypress:run
+language: java
+jdk:
+  - oraclejdk11
+  # cache for jdk?
+services:
+  - postgresql
+deploy:
+  provider: heroku
+  api_key:
+    "aa7a312d-3afd-4446-8392-8f3934e012b2"
+  app: skateplanner
+  on:
+    repo: Skateplanner-Co-KG/skateplanner
