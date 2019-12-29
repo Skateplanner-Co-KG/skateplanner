@@ -5,6 +5,7 @@ matrix:
       jdk:
         - oraclejdk11
       language: java
+      sudo: enabled
     -
       addons:
         apt:
@@ -23,4 +24,3 @@ matrix:
         - 10
       script:
         - "npm run cypress:run"
-      sudo: enabled
