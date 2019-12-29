@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html  xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<nav th:fragment="nav">
+    <div class="navbar navbar-dark bg-dark navbar-fixed-top justify-content-between">
+        <ul>
+            <li th:classappend="${module == 'planner' ? 'active' : ''}"><a href="#" th:href="@{/planner}">Planner</a></li>
+            <li th:classappend="${module == 'contact' ? 'active' : ''}"><a href="#" th:href="@{/contact}">Contact</a></li>
+            <li th:classappend="${module == 'about_us' ? 'active' : ''}"><a href="#" th:href="@{/about_us}">About Us</a></li>
+        </ul>
+        <form  th:action="@{/logout}" method="post">
+            <div class="navbar-nav ml-auto" >
+                <input class="btn btn-outline-light" type="submit" value="Sign Out"/>
+            </div>
+        </form>
+    </div>
+</nav>
+</body>
+</html>

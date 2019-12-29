@@ -11,7 +11,7 @@
 <header>
     <h1>Add new Event</h1>
 </header>
-<nav th:insert="planner.html :: nav"/>
+<nav th:insert="layout.html :: nav"></nav>
 
 <div class=" d-flex justify-content-center">
 	<form th:action="@{/add_event}" th:object="${event}" method="post">
