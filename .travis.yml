@@ -1,33 +1,26 @@
+---
 matrix:
   include:
-    - language: java
-
-    jdk:
-      - oraclejdk11
-
-    sudo: enabled
-
-    - language: node_js
-
-    node_js:
-      - 10
-
-    addons:
-      apt:
-        packages:
-          - libgconf-2-4
-
-    cache:
-      directories:
-        - ~/.npm
-        - ~/.cache
-
-    install:
-      - npm ci
-
-    before_script:
-      - npm start -- --silent &
-
-    script:
-      - npm run cypress:run
-
+    -
+      jdk:
+        - oraclejdk11
+      language: java
+    -
+      addons:
+        apt:
+          packages:
+            - libgconf-2-4
+      before_script:
+        - "npm start -- --silent &"
+      cache:
+        directories:
+          - ~/.npm
+          - ~/.cache
+      install:
+        - "npm ci"
+      language: node_js
+      node_js:
+        - 10
+      script:
+        - "npm run cypress:run"
+      sudo: enabled
