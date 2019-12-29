@@ -9,4 +9,3 @@ deploy:
   api_key:
     secure: "2f1fb2f1-2ff3-4a44-94b4-f1b66fa4d240"
   app: skateplanner
-  # authorization for heroku needed, check build on travis
