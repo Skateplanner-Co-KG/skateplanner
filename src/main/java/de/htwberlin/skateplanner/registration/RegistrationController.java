@@ -5,7 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
@@ -23,7 +26,7 @@ public class RegistrationController {
 
     @GetMapping
     public String showRegistrationForm(Model model) {
-        return "register";
+        return "register_form";
     }
 
     @PostMapping
@@ -35,10 +38,10 @@ public class RegistrationController {
             result.rejectValue("password", null, "Password and Confirmed Password do not match");
         }
         if (result.hasErrors()) {
-            return "forward:/register";
+            return "register_form";
         }
         userDetailsService.save(userDto);
-        return "redirect:/login?registered";
+        return "redirect:login?registered";
     }
 
 }

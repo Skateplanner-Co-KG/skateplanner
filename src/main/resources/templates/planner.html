@@ -11,29 +11,29 @@
 <header>
     <h1>Skateplanner</h1>
 </header>
-<nav th:fragment="nav">
-    <div class="navbar navbar-dark bg-dark navbar-fixed-top justify-content-between">
-        <ul>
-            <li th:classappend="${module == 'planner' ? 'active' : ''}"><a href="#" th:href="@{/planner}">Planner</a></li>
-            <li th:classappend="${module == 'contact' ? 'active' : ''}"><a href="#" th:href="@{/contact}">Contact</a></li>
-            <li th:classappend="${module == 'about_us' ? 'active' : ''}"><a href="#" th:href="@{/about_us}">About Us</a></li>
-        </ul>
-            <form  th:action="@{/logout}" method="post">
-                <div class="navbar-nav ml-auto" >
-            <input class="btn btn-outline-light" type="submit" value="Sign Out"/>
-                </div>
-        </form>
-    </div>
-</nav>
+<nav th:insert="layout.html :: nav"></nav>
 
 <div class="d-flex justify-content-center">
-<button type="button" onclick="location.href = 'add_event';"class="btn btn-info btn-lg " data-cy="addEventBtn"> new Event </button>
+    <button type="button" onclick="location.href = 'add_event'" class="btn btn-info btn-lg " data-cy="addEventBtn"> new Event </button>
 </div>
-<!--<div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="new Event" aria-label="new Event" aria-describedby="add-Button">
-    <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" onclick="window.location.href = 'add_event'" data-cy="addEventBtn">add</button>
-    </div>
-</div>-->
+<table>
+	<thead>
+	<tr>
+		<th>Id</th>
+		<th>Name</th>
+		<th>Type</th>
+		<th>Description</th>
+	</tr>
+	</thead>
+	<th:block th:each="event : ${events}">
+		<tr>
+			<td th:text="*{event.id}"/>
+			<td th:text="*{event.name}"/>
+			<td th:text="*{event.type}"/>
+			<td th:text="*{event.description}"/>
+		</tr>
+	</th:block>
+</table>
+
 </body>
 </html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Event</title>
+    <link rel="stylesheet" href="stylemain.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!-- Include jQuery -->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+	<!-- Include Date Range Picker -->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+	<script>
+		$(document).ready(function(){
+			var date_input=$('input[name="date"]'); //our date input has the name "date"
+			var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+			date_input.datepicker({
+				format: 'mm/dd/yyyy',
+				container: container,
+				todayHighlight: true,
+				autoclose: true,
+			})
+		})
+	</script>
+
+
+</head>
+<body>
+<header>
+    <h1>Add new Event</h1>
+</header>
+<nav th:insert="layout.html :: nav"></nav>
+
+<div class=" d-flex justify-content-center">
+	<form th:action="@{/add_event}" th:object="${event}" method="post">
+
+		<p th:if="${#fields.hasGlobalErrors()}" th:each="error : ${#fields.errors('global')}" th:text="${error}">
+			Validation error
+		</p>
+
+		<div class="input-group-prepend">
+			<span class="input-group-text" id="name">Name :</span>
+			<input type="text" name="eventname" th:field="*{name}" data-cy="eventname"/>
+			<p th:each="error: ${#fields.errors('name')}" th:text="${error}">Validation error</p>
+		</div>
+
+		<div class="input-group-prepend">
+			<span class="input-group-text" id="type">Type :</span>
+			<select id="newEvent" class="form-control" th:field="*{type}" data-cy="eventtype">
+				<option value="training">training</option>
+				<option value="competition">competition</option>
+				<!-- TODO: persist event types in database? -->
+			</select>
+			<p th:each="error: ${#fields.errors('type')}" th:text="${error}">Validation error</p>
+		</div>
+
+	<!--	<div class="form-group">
+			<label class="control-label" for="date">Date</label>
+			<input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+		</div>-->
+		<div class="input-group date" id="datepicker" data-provide="datepicker" data-date-format="dd-mm-yyyy">
+            <input type="text" class="form-control"  name="timespan" data-cy="timespan">
+            <div class="input-group-addon">
+                <span class="glyphicon glyphicon-th" id="timespan"></span>
+            </div>
+        </div>
+
+		<div class="input-group-prepend">
+			<span class="input-group-text" id="description">Description :</span>
+			<input type="text" name="description" th:field="*{description}" data-cy="description"/>
+			<p th:each="error: ${#fields.errors('description')}" th:text="${error}">Validation error</p>
+		</div>
+
+		<div class="input-group-prepend">
+			<span class="input-group-text" id="participants">Participants :</span>
+			<input type="text" name="participants" data-cy="participants"/>
+			TODO: select participants from user list?
+		</div>-->
+
+		<input class="btn btn-outline-dark" type="submit" value="Add Event" data-cy="addEventBtn2">
+	</form>
+</div>
+</body>
+</html>

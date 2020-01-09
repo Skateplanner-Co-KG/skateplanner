@@ -18,7 +18,8 @@ public class UserRegistrationDto {
     @NotEmpty
     private String email;
 
-    public UserRegistrationDto() {}
+    public UserRegistrationDto() {
+    }
 
     public UserRegistrationDto(@NotEmpty String username, @NotEmpty String password, @NotEmpty String confirmPassword, @Email @NotEmpty String email) {
         this.username = username;

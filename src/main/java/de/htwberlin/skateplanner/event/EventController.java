@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 
+@RequestMapping
 @Controller
-@RequestMapping("/add_event")
 public class EventController {
 
     @Autowired
@@ -23,22 +23,28 @@ public class EventController {
         return new EventEntity();
     }
 
+    @RequestMapping("/planner")
     @ModelAttribute("events")
     public Iterable<EventEntity> getAllEvents() {
         return eventRepository.findAll();
     }
 
-    @GetMapping
-    public String showPlannerForm(Model model) {
-        return "planner";
+    @GetMapping("/add_event")
+    public String showAddEventForm(Model model) {
+        return "add_event_form";
     }
 
-    @PostMapping
+    @PostMapping("/add_event")
     public String addEvent(@ModelAttribute("event") @Valid EventEntity event, BindingResult result) {
+
         if (eventRepository.existsByName(event.getName()))
             result.rejectValue("name", null, "Eventname is already taken");
+
+        if (result.hasErrors())
+            return "add_event_form";
+
         eventRepository.save(event);
-        return "planner";
+        return "redirect:planner";
     }
 
 }
