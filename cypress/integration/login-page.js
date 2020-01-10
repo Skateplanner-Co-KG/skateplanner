@@ -10,7 +10,7 @@ function loginAsMember(param) {
 
 function loginAsTrainer(param) {
   cy.get('[data-cy=username]').click().type('trainer');
-  cy.get('[data-cy=password').click().type('pass2');
+  cy.get('[data-cy=password').click().type('pass');
   cy.get('[data-cy=signIn').click();
 }
 
