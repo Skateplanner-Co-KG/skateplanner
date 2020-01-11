@@ -24,13 +24,14 @@ describe('Planner', function () {
         loginAsTrainer();
         cy.get('[data-cy=addEventBtn]').click();
         cy.url().should('contain', 'add_event');
-        cy.get('[data-cy=eventname]').click().type('testEvent');
+        // nicht zweimal hintereinander ausführen
+        cy.get('[data-cy=eventname]').click().type('fakgufgufo');
         //cy.get('[data-cy=eventtype]').click().type('testEvent');
         cy.get('[data-cy=timespan').click().type('15-01-2020');
         cy.get('[data-cy=description').click().type('Schuhe mitbringen');
         cy.get('[data-cy=participants').click().type('Laura, Klara');
         cy.get('[data-cy=addEventBtn2]').click();
-        cy.url().should('eq', 'https://localhost:8080/planner');
+        cy.url().should('eq', 'http://localhost:8080/planner');
         //cy.get('[data-cy=event]').should('contain', 'Testevent am 6.12. 14 Uhr');
     });
 });
