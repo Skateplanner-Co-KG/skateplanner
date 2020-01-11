@@ -39,10 +39,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout().permitAll();
     }
-
-    @Bean
-    public PasswordEncoder getPasswordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
-    }
-
 }
