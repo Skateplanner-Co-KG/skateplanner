@@ -25,7 +25,7 @@ describe('Planner', function () {
         cy.get('[data-cy=addEventBtn]').click();
         cy.url().should('contain', 'add_event');
         // nicht zweimal hintereinander ausführen
-        cy.get('[data-cy=eventname]').click().type('fakgufgufo');
+        cy.get('[data-cy=eventname]').click().type('fakgufo');
         //cy.get('[data-cy=eventtype]').click().type('testEvent');
         cy.get('[data-cy=timespan').click().type('15-01-2020');
         cy.get('[data-cy=description').click().type('Schuhe mitbringen');

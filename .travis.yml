@@ -11,6 +11,8 @@ addons:
 install:
 - npm install -g wait-on
 - npm ci
+script:
+  - npx cypress run
 deploy:
   provider: heroku
   api_key:
