@@ -13,7 +13,7 @@ install:
 - npm ci
 script:
   - ./gradlew bootRun &
-  - sleep 60
+  - sleep 70
   - npx cypress run
 deploy:
   provider: heroku
