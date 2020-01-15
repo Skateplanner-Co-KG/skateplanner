@@ -11,9 +11,9 @@ addons:
 install:
 - npm install -g wait-on
 - npm ci
-before_script:
-  - ./gradlew bootRun &
 script:
+  - ./gradlew bootRun
+  - sleep 60
   - npx cypress run
 deploy:
   provider: heroku
