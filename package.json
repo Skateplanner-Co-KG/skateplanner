@@ -1,0 +1,22 @@
+{
+  "name": "skateplanner",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Skateplanner-Co-KG/skateplanner.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Skateplanner-Co-KG/skateplanner/issues"
+  },
+  "homepage": "https://github.com/Skateplanner-Co-KG/skateplanner#readme",
+  "dependencies": {
+    "cypress": "^3.7.0"
+  }
+}
