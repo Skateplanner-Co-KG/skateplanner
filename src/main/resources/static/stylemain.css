@@ -43,8 +43,4 @@ h1{
     font-size: 40px;
     font-weight: normal;
 }
-.datepicker.dropdown-menu {
-    visibility: visible;
-    opacity: 1;
-    width: auto;
-}
+
