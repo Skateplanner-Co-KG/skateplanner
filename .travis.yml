@@ -1,8 +1,16 @@
 language: java
-jdk:
-- oraclejdk11
+node_js:
+- 10
+sudo: enabled
 services:
 - postgresql
+addons:
+  apt:
+    packages:
+      - libgconf-2-4
+install:
+- npm install -g wait-on
+- npm ci
 deploy:
   provider: heroku
   api_key:
@@ -10,3 +18,7 @@ deploy:
   app: skateplanner
   on:
     repo: Skateplanner-Co-KG/skateplanner
+cache:
+  npm: true
+  directories:
+    - "~/.cache"
