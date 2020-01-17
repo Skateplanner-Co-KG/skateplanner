@@ -12,4 +12,7 @@ public interface EventRepository extends CrudRepository<EventEntity, Long> {
 
     @Override
     EventEntity save(EventEntity e);
+
+    @Override
+    void deleteById(Long aLong);
 }
