@@ -11,6 +11,21 @@
     <h1>Delete Event</h1>
 </header>
 <nav th:insert="layout.html :: nav"></nav>
+<div class=" d-flex justify-content-center">
+    <form th:action="@{/delete_event}" th:object="${event}" method="post">
 
+        <p th:if="${#fields.hasGlobalErrors()}" th:each="error : ${#fields.errors('global')}" th:text="${error}">
+            Validation error
+        </p>
+
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="name">ID :</span>
+            <input type="number" name="eventname" th:field="*{description}" data-cy="deleteEventName"/>
+            <p th:each="error: ${#fields.errors('name')}" th:text="${error}">Validation error</p>
+        </div>
+
+        <input class="btn btn-outline-dark" type="submit" value="Delete Event" data-cy="deleteEventBtn2">
+    </form>
+</div>
 </body>
 </html>

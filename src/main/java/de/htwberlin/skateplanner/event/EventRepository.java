@@ -15,4 +15,6 @@ public interface EventRepository extends CrudRepository<EventEntity, Long> {
 
     @Override
     void deleteById(Long aLong);
+
+    void deleteEventEntityByName(String name);
 }
