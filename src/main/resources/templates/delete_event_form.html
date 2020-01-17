@@ -20,7 +20,7 @@
 
         <div class="input-group-prepend">
             <span class="input-group-text" id="name">ID :</span>
-            <input type="number" name="eventname" th:field="*{description}" data-cy="deleteEventName"/>
+            <input type="number" name="eventname" th:field="*{description}" data-cy="deleteEventId"/>
             <p th:each="error: ${#fields.errors('name')}" th:text="${error}">Validation error</p>
         </div>
 
