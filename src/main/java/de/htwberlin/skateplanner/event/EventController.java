@@ -1,5 +1,6 @@
 package de.htwberlin.skateplanner.event;
 
+import de.htwberlin.skateplanner.email.EmailReminderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,9 @@ public class EventController {
 
     @Autowired
     EventRepository eventRepository;
+
+    @Autowired
+    EmailReminderService emailReminderService;
 
     @ModelAttribute("event")
     public EventEntity eventEntity() {
@@ -42,6 +46,13 @@ public class EventController {
 
         if (result.hasErrors())
             return "add_event_form";
+
+        emailReminderService.sendMessageToAllAccounts(
+                "New event!",
+                "A new event at Skateplanner & Co.KG has been announced!\n" +
+                        "   Name: " + event.getName() + "\n" +
+                        "   Type: " + event.getType() + "\n" +
+                        "   Description:" + event.getDescription() + "\n");
 
         eventRepository.save(event);
         return "redirect:planner";
