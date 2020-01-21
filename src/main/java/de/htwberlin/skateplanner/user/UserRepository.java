@@ -12,4 +12,7 @@ public interface UserRepository extends CrudRepository<UserEntity, String> {
 
     @Override
     UserEntity save(UserEntity entity);
+
+    @Override
+    Iterable<UserEntity> findAll();
 }

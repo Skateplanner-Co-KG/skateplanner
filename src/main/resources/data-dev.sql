@@ -1,6 +1,6 @@
 INSERT INTO users(email, username, password, role) VALUES
-('', 'member', 'pass', 'MEMBER'),
-('', 'trainer', 'pass', 'TRAINER');
+('member@example.com', 'member', 'pass', 'MEMBER'),
+('trainer@example.com', 'trainer', 'pass', 'TRAINER');
 
 INSERT INTO events(name, type, description) VALUES
 ('test1', 'meta', 'some mysterious event'),
