@@ -4,9 +4,6 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**
 !**/src/test/**
-**/data.sql
-**/application.properties
-**/PasswordEncoderConfig.java
 
 ### cypress_stuff ###
 node_modules
