@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Planner</title>
-    <link rel="stylesheet" href="stylemain.css">
-    <link rel="stylesheet" href="styleplanner.css">
+    <link rel="stylesheet" href="css/stylemain.css">
+    <link rel="stylesheet" href="css/styleplanner.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script type="text/javascript" src="calendarScript.js"></script>
 </head>
 <body>
 <header>
@@ -16,6 +15,10 @@
 <div class="container col-sm-4 col-md-7 col-lg-4 mt-5">
     <div class="card">
         <h3 class="card-header" id="monthAndYear"></h3>
+	    <div class="form-inline">
+		    <button class="btn btn-outline-primary col-sm-6" id="previous" onclick="previous()">Previous</button>
+		    <button class="btn btn-outline-primary col-sm-6" id="next" onclick="next()">Next</button>
+	    </div>
         <table class="table table-bordered table-responsive-sm" id="calendar">
             <thead>
             <tr>
@@ -34,12 +37,6 @@
             </tbody>
         </table>
 
-        <div class="form-inline">
-
-            <button class="btn btn-outline-primary col-sm-6" id="previous" onclick="previous()">Previous</button>
-
-            <button class="btn btn-outline-primary col-sm-6" id="next" onclick="next()">Next</button>
-        </div>
         <br/>
         <form class="form-inline">
             <label class="lead mr-2 ml-2" for="month">Jump To: </label>
@@ -59,7 +56,8 @@
             </select>
 
 
-            <label for="year"></label><select class="form-control col-sm-4" name="year" id="year" onchange="jump()">
+            <label for="year"></label>
+	        <select class="form-control col-sm-4" name="year" id="year" onchange="jump()">
             <option value=2020>2020</option>
             <option value=2021>2021</option>
             <option value=2022>2022</option>
@@ -71,11 +69,12 @@
             <option value=2028>2028</option>
             <option value=2029>2029</option>
             <option value=2030>2030</option>
-        </select></form>
+	        </select>
+
+        </form>
     </div>
 </div>
-<!--<button name="jump" onclick="jump()">Go</button>
-<script src="calendarScript.js"></script>-->
+<script src="js/calendarScript.js"></script>
 
 
 
