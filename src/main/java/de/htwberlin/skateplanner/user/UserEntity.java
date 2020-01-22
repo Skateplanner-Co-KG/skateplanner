@@ -15,15 +15,18 @@ public class UserEntity {
     private String username;
     private String password;
     private String role;
+    @Column(name = "notify")
+    private boolean receivingNotifications;
 
     protected UserEntity() {
     }
 
-    public UserEntity(String email, String username, String password, String role) {
+    public UserEntity(String email, String username, String password, String role, boolean receivingNotifications) {
         this.email = email;
         this.username = username;
         this.password = password;
         this.role = role;
+        this.receivingNotifications = receivingNotifications;
     }
 
     public String getEmail() {
@@ -40,5 +43,9 @@ public class UserEntity {
 
     public String getRole() {
         return role;
+    }
+
+    public boolean isReceivingNotifications() {
+        return receivingNotifications;
     }
 }

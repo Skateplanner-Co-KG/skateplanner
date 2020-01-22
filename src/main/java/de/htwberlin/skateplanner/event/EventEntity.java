@@ -3,6 +3,8 @@ package de.htwberlin.skateplanner.event;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.sql.Date;
+import java.util.GregorianCalendar;
 
 @Entity
 @Table(name = "events")
@@ -20,6 +22,9 @@ public class EventEntity {
 
     @NotNull
     private String description;
+
+    @NotNull
+    private Date date;
 
     public EventEntity() {
     }
@@ -50,5 +55,18 @@ public class EventEntity {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        if (!date.matches("\\d{2}-\\d{2}-\\d{4}") || date.length() != 10)
+            throw new IllegalArgumentException("invalid date format!");
+        int year = Integer.parseInt(date.substring(6,10));
+        int month = Integer.parseInt(date.substring(3,5));
+        int day = Integer.parseInt(date.substring(0,2));
+        this.date = new Date(new GregorianCalendar(year,month,day).toInstant().toEpochMilli());
     }
 }

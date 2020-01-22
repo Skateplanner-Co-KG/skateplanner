@@ -38,6 +38,10 @@
 		<p th:each="error: ${#fields.errors('password')}" th:text="${error}">Validation error</p>
 	</div>
 	<div>
+		<p>Notify me about new events via email!</p>
+		<input type="checkbox" th:field="*{allowingNotifications}"/>
+	</div>
+	<div>
 		<button type="submit">Register</button>
 		<span>Already registered? <a href="/" th:href="@{/login}">Login here</a></span>
 	</div>
