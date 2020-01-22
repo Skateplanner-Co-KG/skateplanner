@@ -18,14 +18,17 @@ public class UserRegistrationDto {
     @NotEmpty
     private String email;
 
+    private boolean allowingNotifications;
+
     public UserRegistrationDto() {
     }
 
-    public UserRegistrationDto(@NotEmpty String username, @NotEmpty String password, @NotEmpty String confirmPassword, @Email @NotEmpty String email) {
+    public UserRegistrationDto(@NotEmpty String username, @NotEmpty String password, @NotEmpty String confirmPassword, @Email @NotEmpty String email, boolean allowingNotifications) {
         this.username = username;
         this.password = password;
         this.confirmPassword = confirmPassword;
         this.email = email;
+        this.allowingNotifications = allowingNotifications;
     }
 
     public String getUsername() {
@@ -58,5 +61,13 @@ public class UserRegistrationDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public boolean isAllowingNotifications() {
+        return allowingNotifications;
+    }
+
+    public void setAllowingNotifications(boolean allowingNotifications) {
+        this.allowingNotifications = allowingNotifications;
     }
 }

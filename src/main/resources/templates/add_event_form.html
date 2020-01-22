@@ -53,15 +53,13 @@
                 })
             })
         </script>
-	<!--	<div class="form-group">
-			<label class="control-label" for="date">Date</label>
-			<input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
-		</div>-->
+
 		<div class="input-group date" id="datepicker" data-provide="datepicker" data-date-format="dd-mm-yyyy">
-            <input type="text" class="form-control"  name="timespan" data-cy="timespan">
+            <input type="text" class="form-control"  name="timespan" readonly="true" th:field="*{date}" data-cy="timespan">
             <div class="input-group-addon">
                 <span class="glyphicon glyphicon-th" id="timespan"></span>
             </div>
+			<p th:each="error: ${#fields.errors('date')}" th:text="${error}">Validation error</p>
         </div>
 
 		<div class="input-group-prepend">
@@ -69,12 +67,6 @@
 			<input type="text" name="description" th:field="*{description}" data-cy="description"/>
 			<p th:each="error: ${#fields.errors('description')}" th:text="${error}">Validation error</p>
 		</div>
-
-	<!--	<div class="input-group-prepend">
-			<span class="input-group-text" id="participants">Participants :</span>
-			<input type="text" name="participants" data-cy="participants"/>
-			TODO: select participants from user list?
-		</div>-->
 
 		<input class="btn btn-outline-dark" type="submit" value="Add Event" data-cy="addEventBtn2">
 	</form>

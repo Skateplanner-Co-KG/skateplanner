@@ -32,7 +32,8 @@ class EventControllerTest {
         mockMvc.perform(post("/add_event")
                 .param("name", "something")
                 .param("type", "something")
-                .param("description", "something"))
+                .param("description", "something")
+                .param("date", "02-02-2020"))
                 .andExpect(redirectedUrl("planner"));
         verify(eventController.emailReminderService, times(1)).sendMessageToAllAccounts(any(), any());
         verify(eventRepository, times(1)).save(any());
@@ -44,7 +45,8 @@ class EventControllerTest {
         mockMvc.perform(post("/add_event")
                 .param("name", "something")
                 .param("type", "something")
-                .param("description", "something"))
+                .param("description", "something")
+                .param("date", "02-02-2020"))
                 .andExpect(view().name("add_event_form"));
         verify(eventRepository, times(0)).save(any());
     }
@@ -55,7 +57,8 @@ class EventControllerTest {
         mockMvc.perform(post("/add_event")
                 .param("name", "")
                 .param("type", "something")
-                .param("description", "something"))
+                .param("description", "something")
+                .param("date", "02-02-2020"))
                 .andExpect(view().name("add_event_form"));
         verify(eventRepository, times(0)).save(any());
     }
