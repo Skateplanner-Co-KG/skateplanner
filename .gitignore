@@ -5,6 +5,14 @@ build/
 !**/src/main/**
 !**/src/test/**
 
+### cypress_stuff ###
+node_modules
+cypress/plugins/
+cypress/screenshots/
+cypress/support/
+cypress/videos/
+cypress/fixtures/
+
 ### STS ###
 .apt_generated
 .classpath
