@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html  xmlns:th="https://www.thymeleaf.org">
+<html  xmlns:th="https://www.thymeleaf.org"
+	   xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Planner</title>
@@ -13,10 +14,10 @@
 </header>
 <nav th:insert="layout.html :: nav"></nav>
 
-<div class="d-flex justify-content-center">
+<div sec:authorize="hasRole('ROLE_TRAINER')" class="d-flex justify-content-center">
     <button type="button" onclick="location.href = 'add_event'" class="btn btn-info btn-lg " data-cy="addEventBtn"> new Event </button>
 </div>
-<div class="d-flex justify-content-center">
+<div sec:authorize="hasRole('ROLE_TRAINER')" class="d-flex justify-content-center">
 	<button type="button" onclick="location.href = 'delete_event'" class="btn btn-info btn-lg " data-cy="deleteEventBtn"> delete Event </button>
 </div>
 <table>

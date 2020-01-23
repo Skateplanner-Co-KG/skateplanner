@@ -24,7 +24,6 @@ describe('Planner', function () {
         loginAsTrainer();
         cy.get('[data-cy=addEventBtn]').click();
         cy.url().should('contain', 'add_event');
-        // nicht zweimal hintereinander ausführen
         cy.get('[data-cy=eventname]').click().type('Montagstraining');
         //cy.get('[data-cy=eventtype]').click().type('testEvent');
         cy.get('[data-cy=timespan]').click().type('13-01-2020');
