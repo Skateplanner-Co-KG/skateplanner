@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Event</title>
+    <link rel="stylesheet" href="stylemain.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<header>
+    <h1>Delete Event</h1>
+</header>
+<nav th:insert="layout.html :: nav"></nav>
+<div class=" d-flex justify-content-center">
+    <form th:action="@{/delete_event}" th:object="${event}" method="post">
+
+        <p th:if="${#fields.hasGlobalErrors()}" th:each="error : ${#fields.errors('global')}" th:text="${error}">
+            Validation error
+        </p>
+
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="name">ID :</span>
+            <input type="number" name="eventname" th:field="*{description}" data-cy="deleteEventId"/>
+            <p th:each="error: ${#fields.errors('name')}" th:text="${error}">Validation error</p>
+        </div>
+
+        <input class="btn btn-outline-dark" type="submit" value="Delete Event" data-cy="deleteEventBtn2">
+    </form>
+</div>
+</body>
+</html>

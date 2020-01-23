@@ -38,6 +38,9 @@ public class EventController {
         return "add_event_form";
     }
 
+    @GetMapping("/delete_event")
+    public String showDeleteEventForm(Model model) { return "delete_event_form"; }
+
     @PostMapping("/add_event")
     public String addEvent(@ModelAttribute("event") @Valid EventEntity event, BindingResult result) {
 
@@ -55,6 +58,19 @@ public class EventController {
                         "   Description:" + event.getDescription() + "\n");
 
         eventRepository.save(event);
+        return "redirect:planner";
+    }
+
+    @PostMapping("/delete_event")
+    public String deleteEvent(@ModelAttribute("event") EventEntity event, BindingResult result) {
+        long l =  Integer.parseInt(event.getDescription());
+        if (!eventRepository.existsById(l))
+            result.rejectValue("id", null, "ID not in List");
+
+        if (result.hasErrors())
+            return "delete_event_form";
+
+        eventRepository.deleteById(l);
         return "redirect:planner";
     }
 
