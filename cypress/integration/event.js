@@ -28,7 +28,7 @@ describe('Planner', function () {
         //cy.get('[data-cy=eventtype]').click().type('testEvent');
         cy.get('[data-cy=timespan]').click().type('13-01-2020');
         cy.get('[data-cy=description]').click().type('Schuhe mitbringen');
-        cy.get('[data-cy=participants]').click().type('Laura, Klara');
+        //cy.get('[data-cy=participants]').click().type('Laura, Klara');
         cy.get('[data-cy=addEventBtn2]').click();
         cy.url().should('eq', 'http://localhost:8080/planner');
         //cy.get('[data-cy=event]').should('contain', 'Testevent am 6.12. 14 Uhr');
