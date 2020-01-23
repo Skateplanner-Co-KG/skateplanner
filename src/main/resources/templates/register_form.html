@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
 	<title>Skateplanner - Register</title>
-	<link rel="stylesheet" href="stylelogin.css">
+	<link rel="stylesheet" href="css/stylelogin.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
@@ -36,6 +36,10 @@
 			<input id="confirmPassword" type=password th:field="*{confirmPassword}"/>
 		</label>
 		<p th:each="error: ${#fields.errors('password')}" th:text="${error}">Validation error</p>
+	</div>
+	<div>
+		<p>Notify me about new events via email!</p>
+		<input type="checkbox" th:field="*{allowingNotifications}"/>
 	</div>
 	<div>
 		<button type="submit">Register</button>

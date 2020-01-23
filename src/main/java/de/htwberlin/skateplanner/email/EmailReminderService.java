@@ -20,8 +20,7 @@ public class EmailReminderService {
     @Autowired
     private UserRepository userRepository;
 
-    @Async
-    public Future<Boolean> sendMessage(String to, String subject, String text) {
+    private Future<Boolean> sendMessage(String to, String subject, String text) {
         AsyncResult<Boolean> result = new AsyncResult<>(true);
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
@@ -34,7 +33,8 @@ public class EmailReminderService {
     @Async
     public Future<Boolean> sendMessageToAllAccounts(String subject, String message) {
         for (UserEntity e : userRepository.findAll()) {
-            sendMessage(e.getEmail(), subject, message);
+            if (e.isReceivingNotifications())
+                sendMessage(e.getEmail(), subject, message);
         }
         return new AsyncResult<>(true);
     }

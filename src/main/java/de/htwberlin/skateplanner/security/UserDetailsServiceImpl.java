@@ -37,7 +37,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 registration.getEmail(),
                 registration.getUsername(),
                 passwordEncoder.encode(registration.getPassword()),
-                SecurityConfig.ROLE_MEMBER
+                SecurityConfig.ROLE_MEMBER,
+                registration.isAllowingNotifications()
         );
         return userRepository.save(user);
     }
