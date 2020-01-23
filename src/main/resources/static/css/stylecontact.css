@@ -15,3 +15,17 @@ h1{
     font-size: 40px;
     font-weight: normal;
 }
+box1{
+    float: left;
+    width: 32%;
+    margin-right: 2%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+box2 {
+    float: right;
+    width: 32%;
+    margin-right: 2%;
+    padding: 20px;
+    box-sizing: border-box;
+}
