@@ -11,21 +11,6 @@
 	<!-- Include Date Range Picker -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
-
-	<script>
-		$(document).ready(function(){
-			var date_input=$('input[name="date"]'); //our date input has the name "date"
-			var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
-			date_input.datepicker({
-				format: 'mm/dd/yyyy',
-				container: container,
-				todayHighlight: true,
-				autoclose: true,
-			})
-		})
-	</script>
-
-
 </head>
 <body>
 <header>
@@ -56,6 +41,18 @@
 			<p th:each="error: ${#fields.errors('type')}" th:text="${error}">Validation error</p>
 		</div>
 
+        <script>
+            $(document).ready(function(){
+                var date_input=$('input[name="date"]'); //our date input has the name "date"
+                var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+                date_input.datepicker({
+                    format: 'mm/dd/yyyy',
+                    container: container,
+                    todayHighlight: true,
+                    autoclose: true,
+                })
+            })
+        </script>
 	<!--	<div class="form-group">
 			<label class="control-label" for="date">Date</label>
 			<input class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
@@ -73,7 +70,7 @@
 			<p th:each="error: ${#fields.errors('description')}" th:text="${error}">Validation error</p>
 		</div>
 
-		<div class="input-group-prepend">
+	<!--	<div class="input-group-prepend">
 			<span class="input-group-text" id="participants">Participants :</span>
 			<input type="text" name="participants" data-cy="participants"/>
 			TODO: select participants from user list?

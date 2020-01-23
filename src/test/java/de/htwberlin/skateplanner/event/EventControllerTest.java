@@ -1,11 +1,10 @@
 package de.htwberlin.skateplanner.event;
 
+import de.htwberlin.skateplanner.email.EmailReminderService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-
-import java.util.LinkedList;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -22,9 +21,9 @@ class EventControllerTest {
     void setUp() {
         eventController = new EventController();
         eventController.eventRepository = mock(EventRepository.class);
+        eventController.emailReminderService = mock(EmailReminderService.class);
         eventRepository = eventController.eventRepository;
         mockMvc = MockMvcBuilders.standaloneSetup(eventController).build();
-        when(eventRepository.findAll()).thenReturn(new LinkedList<>());
     }
 
     @Test
@@ -35,6 +34,7 @@ class EventControllerTest {
                 .param("type", "something")
                 .param("description", "something"))
                 .andExpect(redirectedUrl("planner"));
+        verify(eventController.emailReminderService, times(1)).sendMessageToAllAccounts(any(), any());
         verify(eventRepository, times(1)).save(any());
     }
 
