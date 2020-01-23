@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.util.LinkedList;
+import java.util.List;
 
 @RequestMapping
 @Controller
@@ -29,8 +31,11 @@ public class EventController {
 
     @RequestMapping("/planner")
     @ModelAttribute("events")
-    public Iterable<EventEntity> getAllEvents() {
-        return eventRepository.findAll();
+    public List<EventEntity> getAllEvents() {
+        List<EventEntity> result = new LinkedList<>();
+        for (EventEntity e: eventRepository.findAll())
+            result.add(e);
+        return result;
     }
 
     @GetMapping("/add_event")

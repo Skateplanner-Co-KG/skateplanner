@@ -15,43 +15,30 @@
 </header>
 <nav th:insert="layout.html :: nav"></nav>
 
-<div id="caleandar"/>
+<div id="caleandar"></div>
 
 <script type="text/javascript" src="js/caleandar.js"></script>
-<script type="text/javascript">
-    var events = [
-        {'Date': new Date(2020, 0, 7), 'Title': 'Doctor appointment at 3:25pm.'},
-    ];
+<script type="text/javascript" th:inline="javascript">
+    var jsEvents = [];
+    var maEvents = [[${events}]];
+    for (let i=0; i<maEvents.length; i++) {
+        var date = maEvents[i].date.split("-");
+        jsEvents.push({
+	        'Date': new Date(date[2],date[1]-1,date[0]),
+	        'Title': maEvents[i].name+': '+maEvents[i].description
+        });
+    }
     var settings = {};
     var element = document.getElementById('caleandar');
-    caleandar(element, events, settings);
+    caleandar(element, jsEvents, settings);
 </script>
 
-<div class="d-flex justify-content-center" >
+<div class="d-flex justify-content-center">
     <button type="button" onclick="location.href = 'add_event'" class="btn btn-info btn-lg " data-cy="addEventBtn"> new Event </button>
 </div>
 <div class="d-flex justify-content-center">
     <button type="button" onclick="location.href = 'delete_event'" class="btn btn-info btn-lg " data-cy="deleteEventBtn"> delete Event </button>
 </div>
-
-<table>
-	<thead>
-	<tr>
-		<th>Id</th><
-		<th>Name</th>
-		<th>Type</th>
-		<th>Description</th>
-	</tr>
-	</thead>
-	<th:block th:each="event : ${events}">
-		<tr>
-			<td th:text="*{event.id}"/>
-			<td th:text="*{event.name}"/>
-			<td th:text="*{event.type}"/>
-			<td th:text="*{event.description}"/>
-		</tr>
-	</th:block>
-</table>
 
 </body>
 </html>

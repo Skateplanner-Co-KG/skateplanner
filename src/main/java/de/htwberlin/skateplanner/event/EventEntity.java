@@ -24,7 +24,7 @@ public class EventEntity {
     private String description;
 
     @NotNull
-    private Date date;
+    private String date;
 
     public EventEntity() {
     }
@@ -57,7 +57,7 @@ public class EventEntity {
         this.description = description;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -67,6 +67,6 @@ public class EventEntity {
         int year = Integer.parseInt(date.substring(6,10));
         int month = Integer.parseInt(date.substring(3,5));
         int day = Integer.parseInt(date.substring(0,2));
-        this.date = new Date(new GregorianCalendar(year,month,day).toInstant().toEpochMilli());
+        this.date = date;
     }
 }
