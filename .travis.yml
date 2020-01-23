@@ -1,26 +1,28 @@
----
-matrix:
-  include:
-    -
-      jdk:
-        - oraclejdk11
-      language: java
-      sudo: enabled
-    -
-      addons:
-        apt:
-          packages:
-            - libgconf-2-4
-      before_script:
-        - "npm start -- --silent &"
-      cache:
-        directories:
-          - ~/.npm
-          - ~/.cache
-      install:
-        - "npm ci"
-      language: node_js
-      node_js:
-        - 10
-      script:
-        - "npm run cypress:run"
+language: java
+node_js:
+- 10
+sudo: enabled
+services:
+- postgresql
+addons:
+  apt:
+    packages:
+      - libgconf-2-4
+install:
+- npm install -g wait-on
+- npm ci
+script:
+  - ./gradlew bootRun &
+  - sleep 70
+  - npx cypress run
+#deploy:
+#  provider: heroku
+#  api_key:
+#    secure: tj02/uBqj0ye3m1r5cZ8pnW36UEuSkFx7Ak5YhcmUzm26u9S+3RUmpxL7v9Ggza6FH9s6As8Fo/Y7y/0tmyKg21R5Z7kwGSb2fYU15icwlWa0SWRXWAR/K8Xk9+KF2canqvGxpUv/HvsDW1Y0BdyHpGxsiOwVZ0tqmf5iLdVPww3bwT6xXWDASGA3Q0eaAtMkyJ697Z4Rfl5mnvdpT9V2SIwx6y3xvGHLwYF3Id8xRk5/gPEq8UxZ7h1Augcmyh0IVV+ehvosE3GIImFEouwnmDRrOQxPzf5/68VhE/LfWMcHk3CyEe3Oj7uHlaTIOtkio3sp8MIINTRqOSRv2kHYqAzePmh+Q+5Ue77JFo9WPplmS++gdJBoJ6Qr0DQHLBM0ZIlu35XTDzDn8/l1y4kWa/MyKqJpGmPQPzCI0latNtsLdViWFDm2pTNzzVo6Bq/7yJ+XKZfumyhxy63jUcbwA8K8OJk/V4a3zdMJ3SN/a0TFA19uOPEAI22kJ4TuKEw1xSkK+f7QXNdWQi79nHIFpjtel0250AHDWrVvJOyL/dGhgtdciGZGr9c/mB1tvhueBJBlyz5SCFwdqgbDLps304fDW5y6uIuZrSL8WM64p99TuAj6uOokRbZNZhIIUt+xSjizJXq+dtz0WcQQC/WQ6J6j7K67D8Dq+BOHqmDVvs=
+#  app: skateplanner
+#  on:
+#    repo: Skateplanner-Co-KG/skateplanner
+cache:
+  npm: true
+  directories:
+    - "~/.cache"
