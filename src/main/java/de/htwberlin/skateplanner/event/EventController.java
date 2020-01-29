@@ -68,14 +68,15 @@ public class EventController {
 
     @PostMapping("/delete_event")
     public String deleteEvent(@ModelAttribute("event") EventEntity event, BindingResult result) {
-        long l =  Integer.parseInt(event.getDescription());
-        if (!eventRepository.existsById(l))
-            result.rejectValue("id", null, "ID not in List");
+        if (!eventRepository.existsByName(event.getName()))
+            result.rejectValue("name", null, "Event not in List");
 
         if (result.hasErrors())
             return "delete_event_form";
 
-        eventRepository.deleteById(l);
+        EventEntity e = eventRepository.findByName(event.getName());
+
+        eventRepository.deleteById(e.getId());
         return "redirect:planner";
     }
 
