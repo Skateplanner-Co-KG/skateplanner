@@ -4,47 +4,46 @@
 	<title>Skateplanner - Register</title>
 	<link rel="stylesheet" href="css/stylelogin.css">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<style>
+		body {
+			background-image: url('assets/calendar_background.jpg');
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+		}
+	</style>
 </head>
 <body>
+
+<b>
 <form th:action="@{/register}" th:object="${user}" method="post">
 	<p th:if="${#fields.hasGlobalErrors()}" th:each="error : ${#fields.errors('global')}" th:text="${error}">
 		Validation error
 	</p>
 	<div>
-		<label>
-			Username:
-			<input id="username" th:field="*{username}"/>
-		</label>
+		<label> Username: <input id="username" th:field="*{username}"/></label>
 		<p th:each="error: ${#fields.errors('username')}" th:text="${error}">Validation error</p>
 	</div>
 	<div>
-		<label>
-			E-Mail Address:
-			<input id="email" th:field="*{email}"/>
-		</label>
+		<label> E-Mail Address: <input id="email" th:field="*{email}"/></label>
 		<p th:each="error: ${#fields.errors('email')}" th:text="${error}">Validation error</p>
 	</div>
 	<div>
-		<label>
-			Password:
-			<input id="password" type=password th:field="*{password}"/>
-		</label>
+		<label> Password: <input id="password" type=password th:field="*{password}"/></label>
 	</div>
 	<div>
-		<label>
-			Confirm Password:
-			<input id="confirmPassword" type=password th:field="*{confirmPassword}"/>
-		</label>
+		<label> Confirm Password: <input id="confirmPassword" type=password th:field="*{confirmPassword}"/></label>
 		<p th:each="error: ${#fields.errors('password')}" th:text="${error}">Validation error</p>
 	</div>
 	<div>
-		<p>Notify me about new events via email!</p>
-		<input type="checkbox" th:field="*{allowingNotifications}"/>
+		<label> Notify me about new events via email! <input type="checkbox" th:field="*{allowingNotifications}"/></label>
 	</div>
 	<div>
 		<button type="submit">Register</button>
 		<span>Already registered? <a href="/" th:href="@{/login}">Login here</a></span>
 	</div>
 </form>
+</b>
+
 </body>
 </html>

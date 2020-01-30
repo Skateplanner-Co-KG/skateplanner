@@ -60,7 +60,7 @@ public class EventController {
                 "A new event at Skateplanner & Co.KG has been announced!\n" +
                         "   Name: " + event.getName() + "\n" +
                         "   Type: " + event.getType() + "\n" +
-                        "   Description:" + event.getDescription() + "\n");
+                        "   Description: " + event.getDescription() + "\n");
 
         eventRepository.save(event);
         return "redirect:planner";
