@@ -18,7 +18,7 @@
 </header>
 <nav th:insert="layout.html :: nav"></nav>
 
-<div class=" d-flex justify-content-center">
+<div class=" d-flex justify-content-center"style="position:relative; top:100px">
 	<form th:action="@{/add_event}" th:object="${event}" method="post">
 
 		<p th:if="${#fields.hasGlobalErrors()}" th:each="error : ${#fields.errors('global')}" th:text="${error}">
@@ -43,15 +43,16 @@
 
         <script>
             $(document).ready(function(){
-                var date_input=$('input[name="date"]'); //our date input has the name "date"
+                var date_input=$('input[name="date"]');
                 var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
                 date_input.datepicker({
                     format: 'mm/dd/yyyy',
                     container: container,
                     todayHighlight: true,
                     autoclose: true,
-                })
-            })
+					startDate: '-3d'
+                });
+            });
         </script>
 
 		<div class="input-group date" id="datepicker" data-provide="datepicker" data-date-format="dd-mm-yyyy">
