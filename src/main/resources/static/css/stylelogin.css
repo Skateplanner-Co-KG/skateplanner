@@ -1,5 +1,26 @@
-body{
 
-    width: 100%;
-    background-color: snow;
+a{
+    text-align: center;
 }
+
+b{ background-color: rgba(255,255,255,0.4);
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    width:20em;
+    height:10em;
+    margin-top: -7em;
+    margin-left: -9em;
+    text-align: center;
+    font-size: 20px;
+    font-weight: normal;
+    font-style: oblique;
+    color: black;
+
+}
+body{
+    margin-top: 3em;
+    width: 100%;
+
+}
+
